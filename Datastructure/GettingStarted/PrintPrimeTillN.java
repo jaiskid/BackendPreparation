@@ -1,5 +1,6 @@
 import java.util.*;
 class PrintPrimeTillN {
+	//Time Complexity of this function is Square root of N
 	public static boolean PrintPrime(int n) {
 		int Number = n;
 		for (int i = 2; i * i <= n; i++) {
