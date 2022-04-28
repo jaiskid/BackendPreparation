@@ -1,44 +1,37 @@
 import java.util.*;
 class stringCompression {
-	public static String Compression(String result) {
-		String s = "";
-		s += result.charAt(0);
-		for (int i = 1; i < result.length(); i++) {
-			char curr = result.charAt(i);
-			char prev = result.charAt(i - 1);
-			if (prev != curr) {
-				s += curr;
+	public static String compression(String str) {
+		String temp = str.charAt(0) + "";
+		for (int i = 1; i < str.length(); i++) {
+			if (str.charAt(i) != str.charAt(i - 1)) {
+				temp += str.charAt(i);
 			}
 		}
-		return s;
+		return temp;
 	}
-	public static String Compression2Int(String result) {
-		String s = "";
+	public static String compressionInt(String str) {
+		String temp = str.charAt(0) + "";
 		int count = 1;
-		s += result.charAt(0);
-		for (int i = 1; i < result.length(); i++) {
-			char curr = result.charAt(i);
-			char prev = result.charAt(i - 1);
-			if (prev == curr) {
+		for (int i = 1; i < str.length(); i++) {
+			if (str.charAt(i) == str.charAt(i - 1)) {
 				count++;
 			} else {
 				if (count > 1) {
-					s += count;
-					count = 1;
+					temp += count;
 				}
-				s+=curr;
+				count = 1;
+				temp += str.charAt(i);
+
 			}
 		}
-		if(count > 1){
-			s+=count;
-			count = 1;
-		}
-		return s;
+		if (count > 1)
+			temp = temp + count;
+		return temp;
 	}
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
 		String input = scn.next();
-		System.out.println(Compression(input));
-		System.out.println(Compression2Int(input));
+		System.out.println(compression(input));
+		System.out.println(compressionInt(input));
 	}
 }
